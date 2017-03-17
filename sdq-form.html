@@ -1,0 +1,58 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../paper-radio-button/paper-radio-button.html">
+
+<dom-module id="sdq-form">
+  <template>
+    <style include="iron-flex iron-flex-alignment iron-flex-factors">
+      :host {
+        display: block;
+        width:100%;
+        --paper-radio-group-item-padding:5px 12px 5px 12px;
+      }
+    </style>
+    <div class="layout vertical">
+      <div class="layout horizontal center">
+        <div class="flex-1">ข้อ</div>
+        <div class="flex-5">พฤติกรรมประเมิน</div>
+        <div class="flex-4">ไม่จริง/ค่อนข้างจริง/จริง</div>
+      </div>
+     <template is="dom-repeat" items="{{question}}">
+      <div class="layout horizontal center">
+        <div class="flex-1">{{index}}</div>
+        <div class="flex-5">
+         {{item.label}}
+        </div>
+        <div class="flex-4">
+         <paper-radio-group 
+           attr-for-selected="value"
+           selected="{{item.value">
+          <paper-radio-button value="Y"></paper-radio-button>
+          <paper-radio-button value="M"></paper-radio-button>
+          <paper-radio-button value="N"></paper-radio-button>
+         </paper-radio-group>
+        </div>
+      </div>
+     </template>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'sdq-form',
+      properties: {
+        question: {
+          type: Array,
+          value: function() {
+            return [
+              {'label':'ห่วงใยความรู้สึกคนอื่น'},
+              {'label':'อยู่ไม่นิ่ง นั่งนิ่ง ๆ ไม่ได้'} 
+            ]
+          }
+        },
+      },
+
+    });
+  </script>
+</dom-module>
