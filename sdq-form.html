@@ -2,35 +2,37 @@
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../paper-styles/typography.html">
 
 <dom-module id="sdq-form">
   <template>
     <style include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
+        @apply(--paper-font-body1);
         display: block;
         width:100%;
         --paper-radio-group-item-padding:5px 12px 5px 12px;
       }
+      .idx {
+        padding-right:10px;
+      }
     </style>
     <div class="layout vertical">
-      <div class="layout horizontal center">
-        <div class="flex-1">ข้อ</div>
-        <div class="flex-5">พฤติกรรมประเมิน</div>
-        <div class="flex-4">ไม่จริง/ค่อนข้างจริง/จริง</div>
-      </div>
      <template is="dom-repeat" items="{{question}}">
-      <div class="layout horizontal center">
-        <div class="flex-1">{{index}}</div>
-        <div class="flex-5">
-         {{item.label}}
+      <div class="layout vertical">
+        <div>
+         <div>
+          <span class="idx">{{index}}.</span>
+          <span>{{item.label}}</span></div>
         </div>
-        <div class="flex-4">
+        <div>
          <paper-radio-group 
+           noink
            attr-for-selected="value"
            selected="{{item.value">
-          <paper-radio-button value="Y"></paper-radio-button>
-          <paper-radio-button value="M"></paper-radio-button>
-          <paper-radio-button value="N"></paper-radio-button>
+          <paper-radio-button value="N">ไม่จริง</paper-radio-button>
+          <paper-radio-button value="M">ค่อนข้างจริง</paper-radio-button>
+          <paper-radio-button value="Y">จริง</paper-radio-button>
          </paper-radio-group>
         </div>
       </div>
@@ -46,8 +48,56 @@
           type: Array,
           value: function() {
             return [
-              {'label':'ห่วงใยความรู้สึกคนอื่น'},
-              {'label':'อยู่ไม่นิ่ง นั่งนิ่ง ๆ ไม่ได้'} 
+              { 'group':5,
+                'label':'ห่วงใยความรู้สึกคนอื่น'},
+              { 'group':3,
+                'label':'อยู่ไม่นิ่ง นั่งนิ่ง ๆ ไม่ได้'}, 
+              { 'group':1,
+                'label':'มักจะบ่นว่าปวดศีรษะปวดท้อง'},
+              { 'group':5,
+                'label':'เต็มใจแบ่งปันส่ิงของให้เพื่อน (ขนม, ของเล่น, ดินสอเป็นต้น)'}, 
+              { 'group':2,
+                'label':'มักจะอาละวาดหรือโมโหร้าย'}, 
+              { 'group':4,
+                'label':'ค่อนข้างแยกตัวชอบเล่นคนเดียว'}, 
+              { 'group':2,
+                'label':'เช่ือฟัง มัก จะทำตามที่ผู้ใหญ่ต้องการ'}, 
+              { 'group':1,
+                'label':'กังวลใจหลายเรื่อง ดูกังวลเสมอ'}, 
+              { 'group':5,
+                'label':'เป็นที่พึ่งได้เวลาที่คนอื่นเสียใจ อารมณ์ไม่ดี หรือไม่สบายใจ'}, 
+              { 'group':3,
+                'label':'อยู่ไม่สุข วุ่นวายอย่างมาก'}, 
+              { 'group':4,
+                'label':'มีเพื่อนสนิท'}, 
+              { 'group':2,
+                'label':'มักจะมีเรื่องทะเลาะวิวาทกับเด็กอื่น หรือรังแกเด็กอื่น'}, 
+              { 'group':1,
+                'label':'ดูไม่มีความสุข ท้อแท้'}, 
+              { 'group':4,
+                'label':'เป็นที่ชื่นชอบของเพื่อน'}, 
+              { 'group':3,
+                'label':'วอกแวกง่าย สมาธิสั้น'}, 
+              { 'group':1,
+                'label':'เครียดไม่ยอมห่างเวลาอยู่ในสถานการณ์ที่ไม่คุ้น และขาดความมั่นใจในตนเอง'}, 
+              { 'group':5,
+                'label':'ใจดีกับเด็กที่เล็กกว่า'}, 
+              { 'group':2,
+                'label':'ชอบโกหก หรือขี้โกง'}, 
+              { 'group':4,
+                'label':'ถูกเด็กคนอื่นล้อเลียนหรือรังแก'}, 
+              { 'group':5,
+                'label':'ชอบอาสาช่วยเหลือผู้อื่น (พ่อ, แม่, ครู, เด็กคนอื่น)'}, 
+              { 'group':3,
+                'label':'คิดก่อนทำ'}, 
+              { 'group':2,
+                'label':'ขโมยของที่บ้าน ที่โรงเรียนหรือที่อื่น'}, 
+              { 'group':4,
+                'label':'เข้ากับผู้ใหญ่ได้ดีกว่าเด็กวัยเดียวกัน'}, 
+              { 'group':1,
+                'label':'ขี้กลัว รู้สึกหวาดกลัวได้ง่าย'}, 
+              { 'group':3,
+                'label':'ทำงานได้จนเสร็จ มีความตั้งอกตั้งใจในการทำงาน'}
             ]
           }
         },
