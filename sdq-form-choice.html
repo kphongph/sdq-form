@@ -3,7 +3,7 @@
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../paper-radio-button/paper-radio-button.html">
 <link rel="import" href="../paper-styles/typography.html">
-<link rel="import" href="../sdq-radio.html">
+<link rel="import" href="./sdq-radio.html">
 
 <dom-module id="sdq-form-choice">
   <template>
@@ -22,6 +22,11 @@
       }
     </style>
     <div class="layout vertical">
+     <div class="layout horizontal">
+      <sdq-radio label="จริง" value="y" disabled></sdq-radio>
+      <sdq-radio label="ค่อนข้างจริง" value="m" disabled></sdq-radio>
+      <sdq-radio label="ไม่จริง" value="n" disabled></sdq-radio>
+     </div>
      <template is="dom-repeat" items="{{value}}">
       <sdq-radio label="{{_label(item,forChild)}}"
         value="{{item.value}}">
