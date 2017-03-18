@@ -14,29 +14,31 @@
         --paper-radio-group-item-padding:5px 12px 5px 12px;
       }
       .idx {
-        padding-right:10px;
+        width:20px;
+      }
+      .topic {
+        padding:5px;
+      }
+      .question_label {
+        padding-left:10px;
+        text-indent:-10px;
       }
     </style>
     <div class="layout vertical">
-     <template is="dom-repeat" items="{{question}}">
-      <div class="layout vertical">
-        <div>
-         <div>
-          <span class="idx">{{index}}.</span>
-          <span>{{item.label}}</span></div>
-        </div>
-        <div>
-         <paper-radio-group 
+     <ol>
+     <template is="dom-repeat" items="{{value}}">
+      <li class="topic"><span>{{item.label}}</span>
+        <paper-radio-group 
            noink
            attr-for-selected="value"
-           selected="{{item.value">
+           selected="{{item.value}}">
           <paper-radio-button value="N">ไม่จริง</paper-radio-button>
           <paper-radio-button value="M">ค่อนข้างจริง</paper-radio-button>
           <paper-radio-button value="Y">จริง</paper-radio-button>
-         </paper-radio-group>
-        </div>
-      </div>
+        </paper-radio-group>
+      </li>
      </template>
+     </ol>
     </div>
   </template>
 
@@ -44,7 +46,7 @@
     Polymer({
       is: 'sdq-form',
       properties: {
-        question: {
+        value: {
           type: Array,
           value: function() {
             return [
@@ -102,6 +104,9 @@
           }
         },
       },
+      _plusone:function(value) {
+        return value+1;
+      }
 
     });
   </script>
