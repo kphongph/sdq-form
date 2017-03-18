@@ -3,6 +3,7 @@
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../paper-radio-button/paper-radio-button.html">
 <link rel="import" href="../paper-styles/typography.html">
+<link rel="import" href="../sdq-radio.html">
 
 <dom-module id="sdq-form-choice">
   <template>
@@ -16,30 +17,16 @@
       .idx {
         width:20px;
       }
-      .topic {
+      sdq-radio {
         padding:5px;
-      }
-      .question_label {
-        padding-left:10px;
-        text-indent:-10px;
       }
     </style>
     <div class="layout vertical">
-     <ol>
      <template is="dom-repeat" items="{{value}}">
-      <li class="topic">
-        <span>{{_label(item,forChild)}}<br></span>
-        <paper-radio-group 
-           noink
-           attr-for-selected="value"
-           selected="{{item.value}}">
-          <paper-radio-button value="N">ไม่จริง</paper-radio-button>
-          <paper-radio-button value="M">ค่อนข้างจริง</paper-radio-button>
-          <paper-radio-button value="Y">จริง</paper-radio-button>
-        </paper-radio-group>
-      </li>
+      <sdq-radio label="{{_label(item,forChild)}}"
+        value="{{item.value}}">
+      </sdq-radio>
      </template>
-     </ol>
     </div>
   </template>
 
@@ -143,7 +130,6 @@
       _plusone:function(value) {
         return value+1;
       }
-
     });
   </script>
 </dom-module>

@@ -11,12 +11,21 @@
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../sdq-form-choice.html">
+    <link rel="import" href="../sdq-radio.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
+      <h3>Basic sdq-radio demo</h3>
+      <demo-snippet>
+        <template>
+          <sdq-radio label="yes" value="y"></sdq-radio>
+          <sdq-radio label="maybe" value="m"></sdq-radio>
+          <sdq-radio label="no" value="n"></sdq-radio>
+        </template>
+      </demo-snippet>
       <h3>Basic sdq-form demo</h3>
       <demo-snippet>
         <template>
@@ -24,6 +33,8 @@
           <sdq-form-choice for-child></sdq-form-choice>
           For Teacher / Parent
           <sdq-form-choice></sdq-form-choice>
+          Test input
+          <sdq-form-choice value='[{"label":"test","value":"y"}]'></sdq-form-choice>
         </template>
       </demo-snippet>
     </div>
